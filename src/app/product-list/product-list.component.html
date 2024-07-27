@@ -1,0 +1,11 @@
+<h1>Search a Product:</h1>
+<form [formGroup]="searchForm">
+    <input formControlName="searchTerm" placeholder="Search products...">
+  </form>
+  
+  <div *ngFor="let product of products">
+    <h2>{{ product.title }}</h2>
+    <p>{{ product.description }}</p>
+    <p>Price: {{ product.price }}</p>
+  </div>
+  

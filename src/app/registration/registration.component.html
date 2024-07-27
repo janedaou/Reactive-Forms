@@ -1,0 +1,25 @@
+<h1>Registration Page</h1>
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <label for="email">Email:</label>
+  <input id="email" formControlName="email">
+  <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+    <small *ngIf="registrationForm.get('email')?.errors?.['required']">Email is required.</small>
+    <small *ngIf="registrationForm.get('email')?.errors?.['email']">Invalid email format.</small>
+  </div>
+
+  <label for="password">Password:</label>
+  <input id="password" type="password" formControlName="password">
+  <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
+    <small *ngIf="registrationForm.get('password')?.errors?.['required']">Password is required.</small>
+    <small *ngIf="registrationForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</small>
+  </div>
+
+  <label for="confirmPassword">Confirm Password:</label>
+  <input id="confirmPassword" type="password" formControlName="confirmPassword">
+  <div *ngIf="registrationForm.get('confirmPassword')?.invalid && registrationForm.get('confirmPassword')?.touched">
+    <small *ngIf="registrationForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</small>
+    <small *ngIf="registrationForm.errors?.['mismatch']">Passwords do not match.</small>
+  </div>
+
+  <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+</form>
